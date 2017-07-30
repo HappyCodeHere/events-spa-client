@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
 import moment from 'moment';
 
@@ -15,14 +16,16 @@ const propTypes = {
 }
 
 const EventItem = ({ date, title, time, link, originalLink, originalLinkTitle }) => {
+  console.log(link);
   return (
     <div className="event-item">
       <header>
-        <span className="date">{date}</span>
-        <h5>{title}</h5>
-        <span className="time">{time}</span>
+        <span className="date">{moment(date).lang('ru').format('D MMMM YYYY')}</span>
+        <Link to={`/event/${link}`}>{title}</Link>
+        <span className="time">{moment(date).lang('ru').format('HH:mm') !== '00:00' ? moment(date).lang('ru').format('HH:mm') : 'Время не указано'}</span>
       </header>
-      <a href={originalLink}>источник</a>
+      <p className="source">Источник: <a href={originalLink}>{originalLinkTitle}</a></p>
+
     </div>
   )
 }

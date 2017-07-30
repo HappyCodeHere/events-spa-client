@@ -12,11 +12,12 @@ const Header = () => {
   return (
     <div className="header">
       <ul>
-        <li><Link to='today'>На сегодня</Link></li>
-        <li><Link to='all'>Список</Link></li>
-        <li><Link to='about'>О приложении</Link></li>
-        <li><Link to='settings'>Настройки</Link></li>
+        <li><Link to='/today'>На сегодня</Link></li>
+        <li><Link to='/all'>Список</Link></li>
+        <li><Link to='/about'>О приложении</Link></li>
+        <li><Link to='/settings'>Настройки</Link></li>
       </ul>
+      <span>Events Free</span>
     </div>
   )
 }

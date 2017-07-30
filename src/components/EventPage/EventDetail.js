@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
 import moment from 'moment';
 
@@ -15,11 +16,12 @@ const propTypes = {
 const EventDetail = ({ title, text, date, images }) => {
   return (
     <div className="event-detail">
+      <h3>{title}</h3>
       <header>
-        <h3>{title}</h3>
-        <span>{moment(date).format("MMM Do YY")}</span>
+        <Link to="/today"><span></span>Вернутся</Link>
+        <span>{moment(date).lang('ru').format('HH:mm') !== '00:00' ? moment(date).lang('ru').format('D MMMM YYYY HH:mm') : moment(date).lang('ru').format('D MMMM YYYY')}</span>
       </header>
-      <p>{text}</p>
+      <p dangerouslySetInnerHTML={ {__html: text} }></p>
 
       {images.map(item => {
         const { src, description } = item;

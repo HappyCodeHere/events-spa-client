@@ -1,3 +1,29 @@
 .event-item {
-  
+  background-color: #fff;
+  max-width: 700px;
+  box-shadow: 1px 1px 5px #ccc;
+  margin: 20px auto;
+  padding: 15px 20px;
+
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    a {
+      max-width: 400px;
+      text-align: center;
+    }
+  }
+
+  .source {
+    font-size: 12px;
+    display: block;
+    text-align: right;
+    width: 200px;
+    margin-left: auto;
+    margin-bottom: 0;
+  }
 }

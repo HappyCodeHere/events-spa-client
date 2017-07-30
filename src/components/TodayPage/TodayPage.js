@@ -2,7 +2,8 @@ import React, { PropTypes } from 'react';
 
 import EventItem from '../parts/EventItem/EventItem';
 
-import './TodayPage.scss';
+
+// import './TodayPage.scss';
 
 
 const propTypes = {
@@ -10,10 +11,11 @@ const propTypes = {
 }
 
 const TodayPage = ({ events }) => {
+  console.log(events);
   return (
     <div className="today-page">
       <h3>Мероприятия на сегодня</h3>
-      
+
       {events.map(item => {
         const { date, title, time, link, originalLink, originalLinkTitle } = item;
         return (

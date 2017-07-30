@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-import './AboutPage.scss';
+// import './AboutPage.scss';
 
 
 const propTypes = {

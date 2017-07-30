@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import Header from './components/Header/Header';
+
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
 
 import './App.scss';
 
@@ -9,7 +11,11 @@ class App extends Component {
     return (
       <div className="app">
         <Header />
+
         {this.props.children}
+        <div className="sk-spinner sk-spinner-pulse"></div>
+
+        <Footer />
       </div>
     );
   }
