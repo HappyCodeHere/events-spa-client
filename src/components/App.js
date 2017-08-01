@@ -12,7 +12,9 @@ class App extends Component {
       <div className="app">
         <Header />
 
-        {this.props.children}
+        <div className="content">
+          {this.props.children}
+        </div>
         <div className="sk-spinner sk-spinner-pulse"></div>
 
         <Footer />

@@ -13,13 +13,16 @@ import App from './components/App';
 
 export default (
 	<Route path="/" component={App}>
-		<Redirect from="" to="today" />
+		<Redirect from="/" to="today" />
 		<Route path="today" component={TodayPageContainer} />
+		<Route path="all" component={TodayPageContainer} />
 
 		<Redirect from="event" to="today" />
 		<Route path="event/:id" component={EventPageContainer} />
 		<Route path="about" component={AboutPage} />
 		<Route path="settings" component={SettingsPage} />
+
+		<Redirect from="*" to="/" />
 	</Route>
 );
 

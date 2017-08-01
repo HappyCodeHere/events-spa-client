@@ -20,7 +20,7 @@ class TodayPageContainer extends Component {
 
     this.state = {
       events: [],
-      filteredEvents: [],
+      // filteredEvents: [],
       search: ''
     }
 
@@ -28,20 +28,26 @@ class TodayPageContainer extends Component {
     this.handleSearch = this.handleSearch.bind(this);
   }
 
+  // componentWillReceiveProps() {
+  //   this.loadEvents();
+  // }
+
   componentDidMount() {
     this.loadEvents();
   }
 
   handleSearch(search) {
-    this.setState({search})
+    this.setState({search}, () => {
+      this.loadEvents();
+    })
   }
 
   loadEvents() {
-    axios.get(`/events`)
+    axios.get(`/events?${this.props.route.path === 'today' ? 'today=true&' : ''}&search=${this.state.search}`)
       .then(data => {
         console.log(data.data);
         this.setState({events: data.data});
-        this.setState({filteredEvents: data.data});
+        // this.setState({filteredEvents: data.data});
       })
       .catch(error => {
         console.log(error);
@@ -49,22 +55,25 @@ class TodayPageContainer extends Component {
   }
 
   render() {
-    console.log(this.state);
+    console.log(this.props);
     return (
       <div className="today-page-container">
         <Search handleSearch={this.handleSearch} search={this.state.search} />
-        <TodayPage events={(() => {
-            // по быстрому
-            if (this.state.events.length === 0) return this.state.events;
-            let items = this.state.events.filter(item => {
-              let item2 = item.title.toLowerCase();
-              return item2.indexOf(this.state.search.toLowerCase()) !=-1;
-            })
-
-            // console.log(items);
-            return items;
-
-          })()} />
+        <TodayPage events={
+          //   (() => {
+          //   // по быстрому
+          //   if (this.state.events.length === 0) return this.state.events;
+          //   let items = this.state.events.filter(item => {
+          //     let item2 = item.title.toLowerCase();
+          //     return item2.indexOf(this.state.search.toLowerCase()) !=-1;
+          //   })
+          //
+          //   // console.log(items);
+          //   return items;
+          //
+          // })()
+          this.state.events
+        } />
 
       </div>
     )

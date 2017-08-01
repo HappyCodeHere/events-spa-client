@@ -9,13 +9,13 @@ import './EventItem.scss';
 const propTypes = {
   date: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  time: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
+
   originalLink: PropTypes.string.isRequired,
-  originalLinkTitle: PropTypes.string.isRequired,
+  source: PropTypes.string.isRequired,
 }
 
-const EventItem = ({ date, title, time, link, originalLink, originalLinkTitle }) => {
+const EventItem = ({ date, title, link, originalLink, source }) => {
   console.log(link);
   return (
     <div className="event-item">
@@ -24,7 +24,7 @@ const EventItem = ({ date, title, time, link, originalLink, originalLinkTitle })
         <Link to={`/event/${link}`}>{title}</Link>
         <span className="time">{moment(date).lang('ru').format('HH:mm') !== '00:00' ? moment(date).lang('ru').format('HH:mm') : 'Время не указано'}</span>
       </header>
-      <p className="source">Источник: <a href={originalLink}>{originalLinkTitle}</a></p>
+      <p className="source">Источник: <a href={`${source}${originalLink}`}>{source}</a></p>
 
     </div>
   )

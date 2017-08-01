@@ -17,17 +17,16 @@ const TodayPage = ({ events }) => {
       <h3>Мероприятия на сегодня</h3>
 
       {events.map(item => {
-        const { date, title, time, link, originalLink, originalLinkTitle } = item;
+        const { date, title, _id, originalLink, source } = item;
         return (
           <EventItem
-            key={link}
+            key={_id}
 
             date={date}
             title={title}
-            time={time}
-            link={link}
+            link={_id}
             originalLink={originalLink}
-            originalLinkTitle={originalLinkTitle}
+            source={source}
           />
         )
       })}
