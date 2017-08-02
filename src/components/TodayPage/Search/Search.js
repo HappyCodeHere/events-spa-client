@@ -11,8 +11,7 @@ const propTypes = {
 const Search = ({ search, handleSearch }) => {
   return (
     <div className="search">
-      <input type="text" value={search} onChange={(event) => handleSearch(event.target.value)} />
-      по названию
+      <input type="text" className="form-control" value={search} onChange={(event) => handleSearch(event.target.value)}  placeholder="Поиск..." />
     </div>
   )
 }

@@ -28,9 +28,15 @@ class TodayPageContainer extends Component {
     this.handleSearch = this.handleSearch.bind(this);
   }
 
-  // componentWillReceiveProps() {
-  //   this.loadEvents();
-  // }
+  componentWillReceiveProps(nextProps) {
+    // nextProps.route.path === 'today'
+    setTimeout(() => {
+      // как обычно костыль потому что роутер не обновлялся
+      // потом посмотрю
+      this.loadEvents();
+    }, 10);
+    // this.loadEvents();
+  }
 
   componentDidMount() {
     this.loadEvents();

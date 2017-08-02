@@ -24,7 +24,7 @@ const EventItem = ({ date, title, link, originalLink, source }) => {
         <Link to={`/event/${link}`}>{title}</Link>
         <span className="time">{moment(date).lang('ru').format('HH:mm') !== '00:00' ? moment(date).lang('ru').format('HH:mm') : 'Время не указано'}</span>
       </header>
-      <p className="source">Источник: <a href={`${source}${originalLink}`}>{source}</a></p>
+      <p className="source">Источник: <a target="_blank" href={`http://${source}${originalLink}`}>{source}</a></p>
 
     </div>
   )

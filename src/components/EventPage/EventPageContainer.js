@@ -51,7 +51,7 @@ class EventPageContainer extends Component {
       .then(data => {
         setTimeout(() => {
           this.setState({event: data.data});
-        }, 650);
+        }, 350);
       })
       .catch(error => {
         console.log(error);

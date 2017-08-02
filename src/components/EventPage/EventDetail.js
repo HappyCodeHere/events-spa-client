@@ -13,7 +13,9 @@ const propTypes = {
   images: PropTypes.array,
 }
 
-const EventDetail = ({ title, text, date, images }) => {
+const EventDetail = ({ title, text, date, images, ...rest }) => {
+  console.log(document.referrer);
+  console.log(window.location);
   return (
     <div className="event-detail">
       <h3>{title}</h3>
