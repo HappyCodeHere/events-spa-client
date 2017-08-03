@@ -49,7 +49,17 @@ class TodayPageContainer extends Component {
   }
 
   loadEvents() {
-    axios.get(`/events?${this.props.route.path === 'today' ? 'today=true&' : ''}&search=${this.state.search}`)
+    const events = JSON.parse(localStorage.getItem('events')) || {};
+    var keys = Object.keys(events);
+
+    var filtered = keys.filter(function(key) {
+        return events[key]
+    });
+
+    let sources = filtered.join(',');
+
+
+    axios.get(`/events?${this.props.route.path === 'today' ? 'today=true&' : ''}&search=${this.state.search}&sources=${sources}`)
       .then(data => {
         console.log(data.data);
         this.setState({events: data.data});

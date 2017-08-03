@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-// import './AboutPage.scss';
+import './AboutPage.scss';
 
 
 const propTypes = {
@@ -10,7 +10,9 @@ const propTypes = {
 const AboutPage = () => {
   return (
     <div className="about-page">
-      <p>какая нибудь информация тут в общем</p>
+      <h3>О приложении</h3>
+      <p>Все бесплатные мероприятия в одном месте)</p>
+      <p></p>
     </div>
   )
 }

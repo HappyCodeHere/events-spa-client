@@ -7,6 +7,18 @@ import './App.scss';
 
 
 class App extends Component {
+
+  componentWillMount() {
+    // еще один костыль
+    const events = JSON.parse(localStorage.getItem('events')) || {};
+    if (Object.keys(events).length === 0) {
+      console.log('init');
+      let obj = {"imaguru":true,"eventsDevBy":true,"meetupBy":true,"minskforfree":true};
+      localStorage.setItem('events', JSON.stringify(obj));
+    }
+
+
+  }
   render() {
     return (
       <div className="app">

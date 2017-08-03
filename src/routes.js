@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router';
+import { Route, Redirect, IndexRedirect } from 'react-router';
 
 import TodayPageContainer from './components/TodayPage/TodayPageContainer';
 import EventPageContainer from './components/EventPage/EventPageContainer';
@@ -13,7 +13,7 @@ import App from './components/App';
 
 export default (
 	<Route path="/" component={App}>
-		<Redirect from="/" to="today" />
+		<IndexRedirect from="/" to="today" />
 		<Route path="today" component={TodayPageContainer} />
 		<Route path="all" component={TodayPageContainer} />
 

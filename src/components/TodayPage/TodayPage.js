@@ -12,9 +12,13 @@ const propTypes = {
 
 const TodayPage = ({ events }) => {
   console.log(events);
+  console.log();
   return (
     <div className="today-page">
-      <h3>Мероприятия на сегодня</h3>
+      {window.location.pathname === '/today' ?
+        <h3>Мероприятия на сегодня</h3> :
+          <h3>Все мероприятия</h3>
+      }
 
       {events.map(item => {
         const { date, title, _id, originalLink, source } = item;
