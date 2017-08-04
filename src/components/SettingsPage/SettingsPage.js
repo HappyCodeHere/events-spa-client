@@ -18,6 +18,8 @@ class SettingsPage extends Component {
       eventsDevBy: true,
       imaguru: true,
       minskforfree: true,
+      sportMts: false,
+      freeFitnessMinsk: false,
     }
 
     this.handleElementsChange = this.handleElementsChange.bind(this);
@@ -67,6 +69,21 @@ class SettingsPage extends Component {
         value={this.state.minskforfree}
         onChange={this.handleElementsChange}
         text="vk.com/minskforfree"
+      />
+
+    <hr />
+    <h5>Фитнес</h5>
+      <Checkbox
+        name="sportMts"
+        value={this.state.sportMts}
+        onChange={this.handleElementsChange}
+        text="sport.mts.by"
+      />
+      <Checkbox
+        name="freeFitnessMinsk"
+        value={this.state.freeFitnessMinsk}
+        onChange={this.handleElementsChange}
+        text="vk.com/free_fitness_minsk"
       />
       </div>
     )
