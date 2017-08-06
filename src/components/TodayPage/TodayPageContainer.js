@@ -21,11 +21,13 @@ class TodayPageContainer extends Component {
     this.state = {
       events: [],
       // filteredEvents: [],
-      search: ''
+      search: '',
+      offset: 10,
     }
 
     // this.loadEvent = this.loadEvent.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.loadMore = this.loadMore.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -48,6 +50,12 @@ class TodayPageContainer extends Component {
     })
   }
 
+  loadMore() {
+    this.setState({offset: this.state.offset + 10}, () => {
+      this.loadEvents();
+    })
+  }
+
   loadEvents() {
     const events = JSON.parse(localStorage.getItem('events')) || {};
     var keys = Object.keys(events);
@@ -59,7 +67,7 @@ class TodayPageContainer extends Component {
     let sources = filtered.join(',');
 
 
-    axios.get(`/events?${this.props.route.path === 'today' ? 'today=true&' : ''}&search=${this.state.search}&sources=${sources}`)
+    axios.get(`/events?${this.props.route.path === 'today' ? 'today=true&' : ''}&offset=${this.state.offset}&search=${this.state.search}&sources=${sources}`)
       .then(data => {
         console.log(data.data);
         this.setState({events: data.data});
@@ -71,7 +79,7 @@ class TodayPageContainer extends Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.state);
     return (
       <div className="today-page-container">
         <Search handleSearch={this.handleSearch} search={this.state.search} />
@@ -90,6 +98,8 @@ class TodayPageContainer extends Component {
           // })()
           this.state.events
         } />
+
+      <button className="btn btn-link" onClick={this.loadMore}>Показать еще</button>
 
       </div>
     )

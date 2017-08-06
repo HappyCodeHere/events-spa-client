@@ -1,3 +1,9 @@
 .today-page-container {
   // min-height: 800px;
+
+  > button {
+    display: block;
+    margin: 20px auto;
+    min-width: 150px;
+  }
 }

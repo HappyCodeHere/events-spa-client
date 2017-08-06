@@ -16,6 +16,8 @@ export default (
 		<IndexRedirect from="/" to="today" />
 		<Route path="today" component={TodayPageContainer} />
 		<Route path="all" component={TodayPageContainer} />
+		
+		<Route path="past" component={TodayPageContainer} />
 
 		<Redirect from="event" to="today" />
 		<Route path="event/:id" component={EventPageContainer} />

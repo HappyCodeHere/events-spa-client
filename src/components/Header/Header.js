@@ -14,6 +14,7 @@ const Header = () => {
       <ul>
         <li><Link to='/today'>На сегодня</Link></li>
         <li><Link to='/all'>Список</Link></li>
+        <li><Link to='/past'>Прошедшие</Link></li>
         <li><Link to='/about'>О приложении</Link></li>
         <li><Link to='/settings'>Настройки</Link></li>
       </ul>
