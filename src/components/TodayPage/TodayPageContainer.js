@@ -3,11 +3,15 @@ import React, { Component, PropTypes } from 'react';
 import TodayPage from './TodayPage';
 
 import axios from 'axios';
+
+import io from 'socket.io-client';
 // import { API } from '../constants/config';
 
 import Search from './Search/Search';
 
 import './TodayPageContainer.scss';
+
+import toastr from 'toastr';
 
 
 const propTypes = {
@@ -28,6 +32,24 @@ class TodayPageContainer extends Component {
     // this.loadEvent = this.loadEvent.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.loadMore = this.loadMore.bind(this);
+
+    this.connect = this.connect.bind(this);
+    this.disconnect = this.disconnect.bind(this);
+    this.eventsUpdated = this.eventsUpdated.bind(this);
+  }
+
+  connect() {
+    console.log('connect');
+  }
+
+  disconnect() {
+    console.log('disconnect');
+  }
+
+  eventsUpdated() {
+    console.log('events updated');
+    toastr.success('Мероприятия обновлены', 'Успешно!');
+    this.loadEvents();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -41,6 +63,11 @@ class TodayPageContainer extends Component {
   }
 
   componentDidMount() {
+    this.socket = io();
+    this.socket.on('connect', this.connect);
+    this.socket.on('disconnect', this.disconnect);
+    this.socket.on('events-updated', this.eventsUpdated);
+
     this.loadEvents();
   }
 
@@ -67,7 +94,7 @@ class TodayPageContainer extends Component {
     let sources = filtered.join(',');
 
 
-    axios.get(`/events?${this.props.route.path === 'today' ? 'today=true&' : ''}&offset=${this.state.offset}&search=${this.state.search}&sources=${sources}`)
+    axios.get(`/events?${this.props.route.path === 'today' ? 'today=true&' : ''}${this.props.route.path === 'past' ? 'past=true&' : ''}offset=${this.state.offset}&search=${this.state.search}&sources=${sources}`)
       .then(data => {
         console.log(data.data);
         this.setState({events: data.data});

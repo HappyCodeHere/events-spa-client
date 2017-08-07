@@ -52,13 +52,16 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "jquery": "^3.1.1",
     "moment": "^2.18.1",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^5.0.1",
     "react-router": "^3.0.0",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "socket.io-client": "^2.0.3",
+    "toastr": "^2.1.2"
   },
   "scripts": {
     "start": "node scripts/start.js",

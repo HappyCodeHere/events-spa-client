@@ -11,15 +11,19 @@ const propTypes = {
 }
 
 const TodayPage = ({ events }) => {
-  console.log(events);
-  console.log();
+  const showTitle = () => {
+    switch (window.location.pathname) {
+      case '/today':
+        return <h3>Мероприятия на сегодня</h3>
+      case '/past':
+        return <h3>Прошедшие мероприятия</h3>
+      default:
+        return <h3>Все мероприятия</h3>
+    }
+  }
   return (
     <div className="today-page">
-      {window.location.pathname === '/today' ?
-        <h3>Мероприятия на сегодня</h3> :
-          <h3>Все мероприятия</h3>
-      }
-
+      {showTitle()}
       {events.map(item => {
         const { date, title, _id, originalLink, source } = item;
         return (
