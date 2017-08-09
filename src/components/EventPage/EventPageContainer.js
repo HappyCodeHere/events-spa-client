@@ -49,9 +49,9 @@ class EventPageContainer extends Component {
   loadEvent(id) {
     axios.get(`/event?id=${id}`)
       .then(data => {
-        setTimeout(() => {
-          this.setState({event: data.data});
-        }, 350);
+        // setTimeout(() => {
+          this.setState({event: data.data[0]});
+        // });
       })
       .catch(error => {
         console.log(error);

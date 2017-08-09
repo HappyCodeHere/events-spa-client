@@ -25,7 +25,7 @@ const EventDetail = ({ title, text, date, images, ...rest }) => {
       </header>
       <p dangerouslySetInnerHTML={ {__html: text} }></p>
 
-      {images.map(item => {
+      {images && images.map(item => {
         const { src, description } = item;
         return <img src={src} alt={description} />
       })}
