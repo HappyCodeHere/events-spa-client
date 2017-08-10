@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 import TodayPage from './TodayPage';
 
+import { Loader } from '../common';
 import axios from 'axios';
 
 import io from 'socket.io-client';
@@ -27,6 +28,7 @@ class TodayPageContainer extends Component {
       // filteredEvents: [],
       search: '',
       offset: 10,
+      isLoading: false,
     }
 
     // this.loadEvent = this.loadEvent.bind(this);
@@ -71,6 +73,12 @@ class TodayPageContainer extends Component {
     this.loadEvents();
   }
 
+  componentWillUnmount() {
+    console.log('will un');
+    // this.socket.disconnect();
+    this.socket.close();
+  }
+
   handleSearch(search) {
     this.setState({search}, () => {
       this.loadEvents();
@@ -84,6 +92,7 @@ class TodayPageContainer extends Component {
   }
 
   loadEvents() {
+    this.setState({isLoading: true});
     const events = JSON.parse(localStorage.getItem('events')) || {};
     var keys = Object.keys(events);
 
@@ -97,10 +106,12 @@ class TodayPageContainer extends Component {
     axios.get(`/events?${this.props.route.path === 'today' ? 'today=true&' : ''}${this.props.route.path === 'past' ? 'past=true&' : ''}offset=${this.state.offset}&search=${this.state.search}&sources=${sources}`)
       .then(data => {
         console.log(data.data);
-        this.setState({events: data.data});
+
+        this.setState({events: data.data, isLoading: false});
         // this.setState({filteredEvents: data.data});
       })
       .catch(error => {
+        this.setState({isLoading: false});
         console.log(error);
       })
   }
@@ -110,23 +121,31 @@ class TodayPageContainer extends Component {
     return (
       <div className="today-page-container">
         <Search handleSearch={this.handleSearch} search={this.state.search} />
-        <TodayPage events={
-          //   (() => {
-          //   // по быстрому
-          //   if (this.state.events.length === 0) return this.state.events;
-          //   let items = this.state.events.filter(item => {
-          //     let item2 = item.title.toLowerCase();
-          //     return item2.indexOf(this.state.search.toLowerCase()) !=-1;
-          //   })
-          //
-          //   // console.log(items);
-          //   return items;
-          //
-          // })()
-          this.state.events
-        } />
 
-      <button className="btn btn-link" onClick={this.loadMore}>Показать еще</button>
+        {this.state.isLoading ? <Loader /> :
+          <div>
+
+            <TodayPage events={
+              //   (() => {
+              //   // по быстрому
+              //   if (this.state.events.length === 0) return this.state.events;
+              //   let items = this.state.events.filter(item => {
+              //     let item2 = item.title.toLowerCase();
+              //     return item2.indexOf(this.state.search.toLowerCase()) !=-1;
+              //   })
+              //
+              //   // console.log(items);
+              //   return items;
+              //
+              // })()
+              this.state.events
+            } />
+            <button className="btn btn-link" onClick={this.loadMore}>Показать еще</button>
+
+          </div>
+
+    }
+
 
       </div>
     )

@@ -49,9 +49,18 @@
 
   }
 
-  > p {
-    padding: 40px 50px;
+  section {
     background-color: #fff;
+    padding: 40px 50px;
     box-shadow: 1px 1px 3px gray;
+
+    img {
+      display: block;
+      margin: 40px auto;
+
+    }
+
   }
+
+
 }

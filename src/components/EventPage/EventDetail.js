@@ -21,14 +21,18 @@ const EventDetail = ({ title, text, date, images, ...rest }) => {
       <h3>{title}</h3>
       <header>
         <Link to="/today"><span></span>Вернутся</Link>
-        <span>{moment(date).lang('ru').format('HH:mm') !== '00:00' ? moment(date).lang('ru').format('D MMMM YYYY HH:mm') : moment(date).lang('ru').format('D MMMM YYYY')}</span>
+        <span>{moment(date).lang('ru').format('HH:mm') !== '00:00' ? moment(date).lang('ru').format('D MMMM YYYY в HH:mm') : moment(date).lang('ru').format('D MMMM YYYY')}</span>
       </header>
-      <p dangerouslySetInnerHTML={ {__html: text} }></p>
+      <section>
+        <p dangerouslySetInnerHTML={ {__html: text} }></p>
 
-      {images && images.map(item => {
-        const { src, description } = item;
-        return <img src={src} alt={description} />
-      })}
+        {images && images.map(item => {
+          // const { src, description } = item;
+          return <img key={item} src={item} alt={item} />
+        })}
+      </section>
+
+
     </div>
   )
 }
