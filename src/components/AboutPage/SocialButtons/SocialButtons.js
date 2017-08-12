@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share';
 
-import './ShareButtons.scss';
+import './SocialButtons.scss';
 
 const { VKShareButton, FacebookShareButton, TwitterShareButton, TelegramShareButton, LinkedinShareButton, GooglePlusShareButton } = ShareButtons;
 const { VKShareCount, FacebookShareCount, LinkedinShareCount, GooglePlusShareCount } = ShareCounts;
@@ -14,19 +14,19 @@ const TelegramIcon = generateShareIcon('telegram');
 const LinkedinIcon = generateShareIcon('linkedin');
 const GooglePlusIcon = generateShareIcon('google');
 
-const link = 'eventsfree.by';
+const link = 'http://eventsfree.by';
 const title = 'Все бесплатные мероприятия в одном месте!';
-const description = 'some info';
+const description = '';
+const image = 'http://www.eventsfree.by/logo.png';
 const size = 32;
-const image = 'http://jquery-plugins.net/image/plugin/likely-social-sharing-buttons.png';
 
 const propTypes = {
 
 }
 
-const SharedButtons = () => {
+const SocialButtons = () => {
   return (
-    <ul className="shared-buttons">
+    <ul className="social-buttons">
 
       <li>
         <VKShareButton url={link} title={title} description={description} image={image}>
@@ -88,6 +88,6 @@ const SharedButtons = () => {
   )
 }
 
-SharedButtons.propTypes = propTypes;
+SocialButtons.propTypes = propTypes;
 
-export default SharedButtons;
+export default SocialButtons;
