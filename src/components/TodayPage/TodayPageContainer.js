@@ -38,6 +38,7 @@ class TodayPageContainer extends Component {
     this.connect = this.connect.bind(this);
     this.disconnect = this.disconnect.bind(this);
     this.eventsUpdated = this.eventsUpdated.bind(this);
+    this.handleSecretButtonClick = this.handleSecretButtonClick.bind(this);
   }
 
   connect() {
@@ -52,6 +53,11 @@ class TodayPageContainer extends Component {
     console.log('events updated');
     toastr.success('Мероприятия обновлены', 'Успешно!');
     this.loadEvents();
+  }
+
+  handleSecretButtonClick() {
+    console.log('reparse request');
+    this.socket.emit('reparse events');
   }
 
   componentWillReceiveProps(nextProps) {
@@ -117,9 +123,10 @@ class TodayPageContainer extends Component {
   }
 
   render() {
-    console.log(this.state);
+    console.log(this.props);
     return (
       <div className="today-page-container">
+        {this.props.location.query.test && <button className="test-button" onClick={this.handleSecretButtonClick}>секретная кнопка</button>}
         <Search handleSearch={this.handleSearch} search={this.state.search} />
 
         {this.state.isLoading ? <Loader /> :

@@ -16,7 +16,7 @@ const propTypes = {
 }
 
 const EventItem = ({ date, title, link, originalLink, source }) => {
-  console.log(link);
+  // console.log(link);
   return (
     <div className="event-item">
       <header>

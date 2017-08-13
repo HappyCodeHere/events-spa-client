@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 
 import SocialButtons from './SocialButtons/SocialButtons';
+import FeedbackForm from './FeedbackForm/FeedbackForm';
 
 import './AboutPage.scss';
 
@@ -16,6 +17,7 @@ const AboutPage = () => {
       <p>Все бесплатные мероприятия в одном месте)</p>
       <h5>Поделись с друзьями!</h5>
       <SocialButtons />
+      <FeedbackForm />
     </div>
   )
 }
