@@ -13,7 +13,7 @@ const Header = () => {
     <div className="header">
       <ul>
         <li><Link to='/today'>На сегодня</Link></li>
-        <li><Link to='/all'>Список</Link></li>
+        <li><Link to='/all'>Все</Link></li>
         <li><Link to='/past'>Прошедшие</Link></li>
       </ul>
       <span>Events Free</span>

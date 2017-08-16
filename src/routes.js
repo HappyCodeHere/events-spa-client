@@ -24,7 +24,7 @@ export default (
 		<Route path="event/:id" component={EventPageContainer} />
 		<Route path="about" component={AboutPage} />
 		<Route path="settings" component={SettingsPage} />
-		<Route path="feedback" component={FeedbackPage} />
+		<Route path="feedback1" component={FeedbackPage} />
 
 		<Redirect from="*" to="/" />
 	</Route>
