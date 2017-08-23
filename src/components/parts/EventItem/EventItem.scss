@@ -58,4 +58,12 @@
     margin-bottom: 15px;
     margin-top: -40px;
   }
+
+
+  @media (max-width: 600px) {
+    margin: 20px 10px;
+    a {
+      width: auto !important;
+    }
+  }
 }

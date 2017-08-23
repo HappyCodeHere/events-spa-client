@@ -1,6 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 
-import { Loader } from 'common';
+import { Loader } from '../common';
+
+import axios from 'axios';
+
+import Moderate from './Moderate';
 
 import './ModerateContainer.scss';
 
@@ -17,15 +21,22 @@ class ModerateContainer extends Component {
       events: [],
       totalCount: null,
     }
+
+    this.moderateEvent = this.moderateEvent.bind(this);
+  }
+
+  componentDidMount() {
+    this.loadModerateEvents();
   }
 
   loadModerateEvents() {
-    axios.get(`${API}/`)
+    // ?? байнд
+    axios.get(`/moderate`)
       .then(data => {
-        const { events ,totalCount } = data.data;
+        // const { events, totalCount } = data.data;
         this.setState({
-          events: events,
-          totalCount: totalCount,
+          events: data.data,
+          // totalCount: totalCount,
         })
       })
       .catch(error => {
@@ -33,10 +44,30 @@ class ModerateContainer extends Component {
       })
   }
 
+  moderateEvent(id, moderate) {
+    axios.put(`/moderate?id=${id}&moderate=${moderate}`)
+      .then(data => {
+        // const { events, totalCount } = data.data;
+        this.loadModerateEvents();
+        // this.setState({
+        //   events: data.data,
+        //   // totalCount: totalCount,
+        // })
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
   render() {
+    console.log(this.state.events);
     return (
       <div className="">
-        {this.state.events.length }
+        {this.state.events.length === 0 ? <Loader /> :
+          <Moderate
+            events={this.state.events}
+            moderateEvent={this.moderateEvent}
+          />}
       </div>
     )
   }

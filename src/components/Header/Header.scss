@@ -65,4 +65,29 @@
     margin-top: 2px;
     text-transform: uppercase;
   }
+
+
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+
+    span {
+      order: -1;
+    }
+
+    ul:first-of-type {
+      display: block;
+    }
+
+    ul:last-of-type {
+      margin-top: -10px;
+    }
+
+    ul {
+      margin: 10px auto;
+      li {
+        min-width: 120px;
+      }
+    }
+  }
 }
