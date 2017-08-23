@@ -67,7 +67,7 @@ class FeedbackForm extends Component {
 
           {this.state.error && <div className="error">{this.state.error}</div>}
 
-          <input type="submit" onClick={this.handleSubmit} />
+          <input type="submit" onClick={this.handleSubmit} value="Отправить" />
         </form>
       </div>
     )
