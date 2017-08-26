@@ -10,7 +10,7 @@ const propTypes = {
 const Footer = () => {
   return (
     <footer className="footer">
-      <p>© 2017 Events Free. All rights reserved. Make with love <span>❤</span></p>
+      <p>© 2017 Events Free. All rights reserved. Making with love <span>❤</span></p>
     </footer>
   )
 }
